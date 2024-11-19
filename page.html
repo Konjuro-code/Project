@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock - Beginner Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <span id="jam">00</span>
+                <span>:</span>
+                <span id="mnt">00</span>
+                <span>:</span>
+                <span id="dtk">00</span>
+            </div>
+        </div>
+        <div id="space-scene">
+            <div id="stars"></div>
+            <div id="rocks"></div>
+            <div id="planets"></div>
+        </div>
+    </div>
+
+    <script>
+        let jam = document.getElementById("jam")
+        let mnt = document.getElementById("mnt")
+        let dtk = document.getElementById("dtk")
+
+        setInterval(()=>{
+            let currentTime = new Date();
+
+            jam.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+            mnt.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+            dtk.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+        },1000)
+
+       let stars = document.getElementById("stars");
+       let rocks = document.getElementById("rocks");
+       let planets = document.getElementById("planets");
+
+       function createStars() {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const size = Math.random() * 5 + 2; // Sixe of stars
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.top = `${Math.random() * 100}vh`; // Vertical position of the star
+        star.style.left = `${Math.random() * 100}vw`; // Horizontal position of the star
+        star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random animation duration
+        stars.appendChild(star);
+       }
+
+       function createRock() {
+        const rock = document.createElement('div');
+        rock.classList.add('rock');
+        const size = Math.random() * 20 + 10; // Size of rocks between 10px and 30px
+        rock.style.width = `${size}px`;
+        rock.style.height = `${size}px`;
+        rock.style.top = `${Math.random() * 100}vh`; // Vertical position of the rock
+        rock.style.left = `${Math.random() * 100}vw`; // Horizontal position of the rock
+        rock.style.animationDuration = `${Math.random() * 3 + 1}s`; // Random animation duration
+        rocks.appendChild(rock);
+       }
+
+       function createPlanet() {
+        const planetjavascript = document.createElement('div');
+        planet.classList.add('planet');
+        const size = Math.random() * 50 + 30; // Size of planets between 30px and 80px
+        planet.style.width = `${size}px`;
+        planet.style.height = `${size}px`;
+        planet.style.top = `${Math.random() * 100}vh`; // Vertical position of the planet
+        planet.style.left = `${Math.random() * 100}vw`; // Horizontal position of the planet
+        planet.style.animationDuration = `${Math.random() * 10 + 5}s`; // Random orbit duration
+        planets.appendChild(planet);
+        }
+
+        // Create stars every second
+        setInterval(createStars, 1000);
+
+        // Create rocks every 2 seconds
+        setInterval(createRock, 2000);
+
+        // Create planets every 5 seconds
+        setInterval(createPlanet, 5000);
+       
+    </script>
+</body>
+</html>
